@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class DoorTrigger : MonoBehaviour
+public class PressurePlate: MonoBehaviour
 {
     public Transform door;
     public Transform pressurePlate;
