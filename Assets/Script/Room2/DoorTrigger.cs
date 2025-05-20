@@ -25,18 +25,18 @@ public class DoorTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !isMoving)
+        if (other.CompareTag("Player"))
         {
-            isMoving = true;
+            StopAllCoroutines();
             StartCoroutine(MoveDoorUp());
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && !isMoving)
+        if (other.CompareTag("Player"))
         {
-            isMoving = true;
+            StopAllCoroutines();
             StartCoroutine(MoveDoorDown());
         }
     }
