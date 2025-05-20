@@ -5,6 +5,7 @@ public class PressurePlate: MonoBehaviour
 {
     public Transform door;
     public Transform pressurePlate;
+    public ParticleSystem[] sandParticles;
     public float moveDistance = 6f;
     public float moveSpeed = 2f;
     public float platePressDistance = 0.3f;
@@ -55,7 +56,24 @@ public class PressurePlate: MonoBehaviour
         while (Vector3.Distance(door.position, target) > 0.01f)
         {
             door.position = Vector3.MoveTowards(door.position, target, moveSpeed * Time.deltaTime);
+            if (sandParticles.Length>0)
+            {
+                foreach (ParticleSystem particleSystem in sandParticles)
+                {
+                    var p = particleSystem.main;
+                    p.loop = true;
+                }
+            }
             yield return null;
+        }
+
+        if (sandParticles.Length > 0)
+        {
+            foreach (ParticleSystem particleSystem in sandParticles)
+            {
+                var p = particleSystem.main;
+                p.loop = false;
+            }
         }
         door.position = target;
     }
