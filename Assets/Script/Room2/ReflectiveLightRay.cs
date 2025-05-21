@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ReflectiveLightRay : MonoBehaviour
 {
-    public int maxReflections = 5;
+    public int maxReflections = 7;
     public float maxRayDistance = 100f;
     public LineRenderer lineRenderer;
     public LayerMask reflectiveLayers;
