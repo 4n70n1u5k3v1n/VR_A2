@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Anchor
   - OpenItems
+  - Statue
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ReflectiveSurface
   - Water
   - UI
   - 
