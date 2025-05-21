@@ -7,6 +7,9 @@ public class DoorController : MonoBehaviour
     public XRSocketInteractor socket1;
     public XRSocketInteractor socket2;
     public XRSocketInteractor socket3;
+    public XRSocketInteractor socket4;
+    public XRSocketInteractor socket5;
+
     public GameObject door;
     public float doorSpeed = 2f;
     public Vector3 doorTargetPosition; // Manually set this in the Inspector
@@ -29,10 +32,16 @@ public class DoorController : MonoBehaviour
         socket1.selectEntered.AddListener(OnItemAttached);
         socket2.selectEntered.AddListener(OnItemAttached);
         socket3.selectEntered.AddListener(OnItemAttached);
+        socket4.selectEntered.AddListener(OnItemAttached);
+        socket5.selectEntered.AddListener(OnItemAttached);
+
 
         socket1.selectExited.AddListener(OnItemRemoved);
         socket2.selectExited.AddListener(OnItemRemoved);
         socket3.selectExited.AddListener(OnItemRemoved);
+        socket4.selectExited.AddListener(OnItemRemoved);
+        socket5.selectExited.AddListener(OnItemRemoved);
+
     }
 
     private void Update()
