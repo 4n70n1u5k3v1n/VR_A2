@@ -5,7 +5,8 @@ public class ReflectiveLightRay : MonoBehaviour
     public int maxReflections = 7;
     public float maxRayDistance = 100f;
     public LineRenderer lineRenderer;
-    public LayerMask reflectiveLayers;
+    public string reflectiveTag = "ReflectiveSurface"; // Assign this tag to your reflective objects
+    public float passThroughOffset = 0.01f;
 
     void Update()
     {
@@ -24,16 +25,24 @@ public class ReflectiveLightRay : MonoBehaviour
         while (reflectionsRemaining > 0)
         {
             Ray ray = new Ray(currentPos, currentDir);
-            if (Physics.Raycast(ray, out RaycastHit hit, maxRayDistance, reflectiveLayers))
+            if (Physics.Raycast(ray, out RaycastHit hit, maxRayDistance))
             {
+                // Check if the hit object has the reflective tag
                 currentPos = hit.point;
                 lineRenderer.positionCount = segmentIndex + 1;
                 lineRenderer.SetPosition(segmentIndex, currentPos);
-
-                currentDir = Vector3.Reflect(currentDir, hit.normal);
-                reflectionsRemaining--;
-
                 segmentIndex++;
+
+                if (hit.collider.CompareTag(reflectiveTag))
+                {
+                    currentDir = Vector3.Reflect(currentDir, hit.normal);
+                    reflectionsRemaining--;
+                }
+                else
+                {
+                    // Go through non-reflective surface: continue in same direction
+                    currentPos += currentDir * passThroughOffset;
+                }
             }
             else
             {

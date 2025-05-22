@@ -7,6 +7,7 @@ TagManager:
   - Anchor
   - OpenItems
   - Statue
+  - ReflectiveSurface
   layers:
   - Default
   - TransparentFX
