@@ -48,6 +48,6 @@ public class SpiderSpawner : MonoBehaviour
         }
 
         // Auto destroy spider after 6 seconds
-        Destroy(spider, 6f);
+        Destroy(spider, 4f);
     }
 }

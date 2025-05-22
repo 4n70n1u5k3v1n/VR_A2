@@ -6,8 +6,7 @@ TagManager:
   tags:
   - Anchor
   - OpenItems
-  - CorrectStatue
-  - FakeStatue
+  - Statue
   layers:
   - Default
   - TransparentFX
