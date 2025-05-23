@@ -47,11 +47,16 @@ public class DoorTrigger2 : MonoBehaviour
     {
         if (other.CompareTag("Player") && !hasPickedUpStatue)
         {
-            doorShouldBeClosed = true;
-            doorShouldBeOpened = false;
-            PlayEffects();
+            // Only trigger door closing if not already closing
+            if (!doorShouldBeClosed)
+            {
+                doorShouldBeClosed = true;
+                doorShouldBeOpened = false;
+                PlayEffects();
+            }
         }
     }
+
 
     public void OnStatuePickedUp()
     {
