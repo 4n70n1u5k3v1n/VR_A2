@@ -1,31 +1,26 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
 {
-    public GameObject[] sockets;           // Drag all 9 socket GameObjects here
-    public DoorTrigger3 doorController;    // Drag your door GameObject here
-    public string correctTag = "PuzzlePiece"; // Tag of correct pieces
-
-    private bool doorOpened = false;
+    public LivingStatue[] statues;
 
     void Update()
     {
-        if (!doorOpened && AllSocketsCorrect())
+        if (AllStatuesInPlace())
         {
-            doorOpened = true;
-            doorController.OpenDoor();
+            Debug.Log("✅ Puzzle Solved!");
+            // You can trigger door open, lights, effects here
+            enabled = false; // stop checking
         }
     }
 
-    bool AllSocketsCorrect()
+    bool AllStatuesInPlace()
     {
-        foreach (var socket in sockets)
+        foreach (var statue in statues)
         {
-            PuzzleSocket puzzleSocket = socket.GetComponent<PuzzleSocket>();
-            if (puzzleSocket == null || !puzzleSocket.IsCorrectlyFilled)
+            if (!statue.IsAtGoal())
                 return false;
         }
         return true;
     }
-
 }
