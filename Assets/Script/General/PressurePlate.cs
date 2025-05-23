@@ -60,8 +60,7 @@ public class PressurePlate: MonoBehaviour
             {
                 foreach (ParticleSystem particleSystem in sandParticles)
                 {
-                    var p = particleSystem.main;
-                    p.loop = true;
+                    particleSystem.Play();
                 }
             }
             yield return null;
@@ -71,8 +70,8 @@ public class PressurePlate: MonoBehaviour
         {
             foreach (ParticleSystem particleSystem in sandParticles)
             {
-                var p = particleSystem.main;
-                p.loop = false;
+                particleSystem.Pause();
+                particleSystem.Clear();
             }
         }
         door.position = target;
