@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LayerNames:
   - Default
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ItemLvl1OpenDoor1
+  - ItemLvl1OpenDoor2
+  - ItemLvl1OpenDoor3
+  - ItemLvl1OpenDoor4
+  - ItemLvl1OpenDoor5
+  - PlateSocket
+  - MirrorSocket
+  - Room3 Scale item
   - 
   - 
   - 

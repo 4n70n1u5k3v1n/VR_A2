@@ -6,11 +6,14 @@ TagManager:
   tags:
   - Anchor
   - OpenItems
+  - Statue
+  - ReflectiveSurface
+  - PuzzlePiece
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ReflectiveSurface
   - Water
   - UI
   - 
