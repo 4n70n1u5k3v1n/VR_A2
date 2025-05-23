@@ -3397,6 +3397,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Custom Inputs",
+            "id": "56a20eac-1fc6-4205-a96e-fc6d6b3c0fa8",
+            "actions": [
+                {
+                    "name": "MissionSheetButton",
+                    "type": "Button",
+                    "id": "39c4ce47-d295-4c77-a4da-b18173a2c6d8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2d3c71c7-87c9-4645-ab52-6331939fbcff",
+                    "path": "<XRController>{LeftHand}/{MenuButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MissionSheetButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
