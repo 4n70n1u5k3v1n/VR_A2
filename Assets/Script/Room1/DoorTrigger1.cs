@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class DoorTrigger : MonoBehaviour
+public class DoorTrigger1 : MonoBehaviour
 {
     public Transform targetPoint;       // Set this in Inspector
     public float openSpeed = 2f;

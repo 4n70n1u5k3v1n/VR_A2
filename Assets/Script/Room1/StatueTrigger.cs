@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class StatueTrigger : MonoBehaviour
 {
     public bool isCorrectStatue;
-    public DoorTrigger doorTrigger;
+    public DoorTrigger1 doorTrigger;
     public SpiderSpawner spiderSpawner;
 
     private XRGrabInteractable grabInteractable;
