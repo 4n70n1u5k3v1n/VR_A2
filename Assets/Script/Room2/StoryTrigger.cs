@@ -1,10 +1,8 @@
 using System.Collections;
 using UnityEngine;
-using TMPro;
 
 public class StoryTrigger : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI storyText;
     [SerializeField] private GameObject[] tileParents;
     private bool hasActivated = false;
 
@@ -13,7 +11,6 @@ public class StoryTrigger : MonoBehaviour
         if (!hasActivated && other.CompareTag("Player"))
         {
             hasActivated = true;
-            storyText.text += "\n" + "Mission 2" + "\n" + "Mission 3";
             StartCoroutine(ActivateTile());
         }
     }
