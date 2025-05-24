@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoorTrigger : MonoBehaviour
+public class OriginDoorTrigger : MonoBehaviour
 {
     public GameObject door = null;      // door
     public float openedHeight = 2.0f;   // opened door height
