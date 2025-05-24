@@ -3,46 +3,39 @@ using UnityEngine;
 
 public class ScaleSystem : MonoBehaviour
 {
-    public float targetMass = 10f; // Target mass to open the door
-    private List<Rigidbody> objectsOnScale = new List<Rigidbody>();
+    public float targetMass = 10f; // The mass needed to open the door
+    private float currentMass = 0f; // Tracks the current mass on the scale
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
+        // Check if the object has a Rigidbody, and add its mass to the currentMass
         Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb != null && !objectsOnScale.Contains(rb))
+        if (rb != null)
         {
-            objectsOnScale.Add(rb);
-            CheckTotalMass();
+            currentMass += rb.mass;
+
+            // Check if the currentMass meets or exceeds the targetMass
+            if (currentMass >= targetMass)
+            {
+                OpenDoor();
+            }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
+        // Subtract the mass of the object that's leaving the scale
         Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb != null && objectsOnScale.Contains(rb))
+        if (rb != null)
         {
-            objectsOnScale.Remove(rb);
-            CheckTotalMass();
+            currentMass -= rb.mass;
         }
     }
 
-    private void CheckTotalMass()
+    void OpenDoor()
     {
-        float totalMass = 0f;
-        foreach (Rigidbody rb in objectsOnScale)
-        {
-            totalMass += rb.mass;
-        }
-
-        if (totalMass == targetMass)
-        {
-            OpenDoor();
-        }
-    }
-
-    private void OpenDoor()
-    {
-        // Add code to open the door (e.g., move the door, play an animation, etc.)
-        Debug.Log("Door Opened!");
+        // Logic to open the door
+        Debug.Log("Door Opens!");
+        // Insert the functionality to open the door in your VR environment
     }
 }
