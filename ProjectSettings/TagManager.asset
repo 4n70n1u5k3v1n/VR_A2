@@ -9,6 +9,7 @@ TagManager:
   - Statue
   - ReflectiveSurface
   - PuzzlePiece
+  - Skeleton
   layers:
   - Default
   - TransparentFX
