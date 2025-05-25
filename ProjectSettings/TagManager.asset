@@ -9,7 +9,7 @@ TagManager:
   - Statue
   - ReflectiveSurface
   - PuzzlePiece
-  - TriggerObject
+  - Skeleton
   layers:
   - Default
   - TransparentFX
