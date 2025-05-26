@@ -39,7 +39,15 @@ public class StepSoundAndTextCanvas : MonoBehaviour
             audioSource = gameObject.AddComponent<AudioSource>();
         }
         audioSource.clip = soundEffect;
-        audioSource.Play(); // Important to actually play the sound
+        audioSource.Play();
+    }
+
+    void StopSound()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 
     void ShowCanvases()
@@ -54,12 +62,12 @@ public class StepSoundAndTextCanvas : MonoBehaviour
         }
     }
 
-    // Optional: hide canvases when player exits
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             HideCanvases();
+            StopSound();
         }
     }
 
