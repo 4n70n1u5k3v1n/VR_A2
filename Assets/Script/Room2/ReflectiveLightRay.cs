@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class ReflectiveLightRay : MonoBehaviour
 {
-    public int maxReflections = 7;
-    public float maxRayDistance = 100f;
-    public LineRenderer lineRenderer;
-    public string reflectiveTag = "ReflectiveSurface"; // Assign this tag to your reflective objects
-    public float passThroughOffset = 0.01f;
+    [SerializeField] private int maxReflections = 7;
+    [SerializeField] private float maxRayDistance = 100f;
+    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private string reflectiveTag = "ReflectiveSurface";
+    [SerializeField] private string receiverTag = "LightReceiver";
+    [SerializeField] private float passThroughOffset = 0.01f;
+
+    [Header("Highlighting")]
+    [SerializeField] private Material correctTileMaterial;
+    [SerializeField] private GameObject[] correctTiles;
+    [SerializeField] private Material lightReceiverMaterial;
+    [SerializeField] private GameObject lightReceiver;
 
     void Update()
     {
@@ -37,6 +44,32 @@ public class ReflectiveLightRay : MonoBehaviour
                 {
                     currentDir = Vector3.Reflect(currentDir, hit.normal);
                     reflectionsRemaining--;
+                }
+                else if (hit.collider.CompareTag(receiverTag))
+                {
+                    Renderer receiverRenderer = hit.collider.GetComponent<Renderer>();
+                    if (receiverRenderer != null && correctTileMaterial != null)
+                        receiverRenderer.material = correctTileMaterial;
+
+                    foreach (GameObject tile in correctTiles)
+                    {
+                        if (tile != null)
+                        {
+                            Renderer rend = tile.GetComponent<Renderer>();
+                            if (rend != null)
+                            {
+                                rend.material = correctTileMaterial;
+                            }
+                        }
+                    }
+
+                    Renderer renderer = lightReceiver.GetComponent<Renderer>();
+                    if (renderer != null)
+                    {
+                        renderer.material = lightReceiverMaterial;
+                    }
+
+                    break;
                 }
                 else
                 {
