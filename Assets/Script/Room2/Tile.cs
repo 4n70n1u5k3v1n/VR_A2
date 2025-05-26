@@ -86,4 +86,12 @@ public class Tile : MonoBehaviour
 
         isMoving = false;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player") && !gameObject.CompareTag("SafeTile"))
+        {
+            RaiseNeedles();
+        }
+    }
 }

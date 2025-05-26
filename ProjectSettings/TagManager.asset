@@ -10,6 +10,11 @@ TagManager:
   - ReflectiveSurface
   - PuzzlePiece
   - Skeleton
+  - TriggerObject
+  - Needle
+  - SafeTile
+  - Tile
+  - LightReceiver
   layers:
   - Default
   - TransparentFX
