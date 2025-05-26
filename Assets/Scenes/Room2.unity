@@ -17411,6 +17411,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileBrown
       objectReference: {fileID: 0}
+    - target: {fileID: 6498172271016931602, guid: bf503a6fe0520c04db4f06fd9e471237, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498172271016931602, guid: bf503a6fe0520c04db4f06fd9e471237, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602982290493223535, guid: bf503a6fe0520c04db4f06fd9e471237, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e5b99535369771a4e932272c39ba62fa, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58675,7 +58687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1105331778044711038, guid: 67b0dd72bfe644846a72fa6b6d04dd31, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6866512752054136010, guid: 67b0dd72bfe644846a72fa6b6d04dd31, type: 3}
       propertyPath: m_Name
@@ -58685,6 +58697,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c70c6436bc389ba41be7bb8044d9131a, type: 3}
+    - target: {fileID: 8847670816048069763, guid: 67b0dd72bfe644846a72fa6b6d04dd31, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
