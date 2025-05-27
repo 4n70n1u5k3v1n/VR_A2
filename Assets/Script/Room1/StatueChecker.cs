@@ -1,24 +1,26 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StatueChecker : MonoBehaviour
 {
     [System.Serializable]
     public class SocketMatch
     {
-        public Transform socket;          // The socket's Transform
-        public GameObject correctStatue;  // The exact statue that must be in this socket
+        public Transform socket;          // XR Socket Transform
+        public GameObject correctStatue;  // Drag the exact statue GameObject here
     }
 
-    public SocketMatch[] socketMatches;       // Set in Inspector
-    public Room1PortalTrigger portalTrigger;  // Reference to your portal
+    public SocketMatch[] socketMatches;       // Assign in Inspector
+    public Room1PortalTrigger portalTrigger;  // Drag the portal trigger GameObject here
+
+    private bool portalActivated = false;
 
     void Update()
     {
-        if (AllStatuesCorrectlyPlaced())
+        if (!portalActivated && AllStatuesCorrectlyPlaced())
         {
             Debug.Log("All statues correctly placed! Activating portal...");
             portalTrigger.ActivatePortal();
-            enabled = false; // Stop checking once done
+            portalActivated = true;
         }
     }
 
@@ -26,10 +28,13 @@ public class StatueChecker : MonoBehaviour
     {
         foreach (SocketMatch match in socketMatches)
         {
-            if (match.socket.childCount == 0) return false;
+            if (match.socket.childCount == 0)
+                return false;
 
-            Transform placedStatue = match.socket.GetChild(0);
-            if (placedStatue.gameObject != match.correctStatue)
+            Transform placed = match.socket.GetChild(0);
+
+            // Compare exact GameObject reference (no naming issues)
+            if (placed.gameObject != match.correctStatue)
                 return false;
         }
         return true;

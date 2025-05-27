@@ -1,5 +1,5 @@
-using UnityEngine;
-using UnityEngine.SceneManagement; // <-- Needed for SceneManager
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Room1PortalTrigger : MonoBehaviour
 {
@@ -8,13 +8,15 @@ public class Room1PortalTrigger : MonoBehaviour
     public void ActivatePortal()
     {
         portalIsActive = true;
-        // Optional: play sound, FX, open door animation
+        Debug.Log("Portal has been activated!");
+        // Optional: play sound, animation, or VFX
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (portalIsActive && other.CompareTag("Player"))
         {
+            Debug.Log("Teleporting player to the next scene...");
             SharedResources.sceneCount++;
             string nextScene = SharedResources.sceneName + SharedResources.sceneCount;
             SceneManager.LoadScene(nextScene);
