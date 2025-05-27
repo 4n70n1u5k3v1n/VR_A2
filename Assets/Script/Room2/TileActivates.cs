@@ -9,7 +9,7 @@ public class TileActivates : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !gameObject.CompareTag("SafeTile"))
+        if (other.gameObject.CompareTag("Player"))
         {
             StartCoroutine(ActivateTile());
         }
