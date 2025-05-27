@@ -10,41 +10,16 @@ public class Player : MonoBehaviour
     public LocomotionMediator locomotionSystem;
     public GameObject warningPanel;
 
-    private void OnCollisionEnter(Collision collision)
+    public void PlayerDies()
     {
-        Debug.Log("Collision");
-        if (collision.gameObject.CompareTag("Tile"))
-        {
-            Debug.Log("Touch Tile");
-            ActivateTile(collision.gameObject.GetComponent<Tile>());
-        }
-        else if (collision.gameObject.CompareTag("Needle"))
+        if (locomotionSystem != null)
         {
             locomotionSystem.enabled = false;
-            if (locomotionSystem != null)
-            {
-                locomotionSystem.enabled = false;
-            }
-
-            if (warningPanel != null)
-            {
-                warningPanel.SetActive(true);
-            }
-        }
-    }
-
-    private IEnumerator ActivateTile(Tile tile)
-    {
-        if (tile != null)
-        {
-            tile.RaiseNeedles();
         }
 
-        yield return new WaitForSeconds(2f);
-
-        if (tile != null)
+        if (warningPanel != null)
         {
-            tile.LowerNeedles();
+            warningPanel.SetActive(true);
         }
     }
 
