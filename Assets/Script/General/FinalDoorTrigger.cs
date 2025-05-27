@@ -162,13 +162,14 @@ public class FinalDoorTrigger : MonoBehaviour
     //[Header("Mummy Chase Settings")]
     public GameObject followerModel; // The mummy object
     public Transform player;
-    public float followDistance = 1.5f;
+    public float followDistance = 0.2f;
 
     private Vector3 openedPos;
     private Vector3 closedPos;
     private bool isActivated = false;
     private int direction = -1;
     private float interpolate = 0.0f;
+    private bool isTouching = false;
 
     private bool shouldFollow = false;
     private NavMeshAgent agent;
@@ -214,14 +215,17 @@ public class FinalDoorTrigger : MonoBehaviour
             if (distanceToPlayer > followDistance)
             {
                 agent.SetDestination(player.position);
+                isTouching = false;
             }
-            else
+            else if (!isTouching)
             {
                 // Optional: Face the player even when close
                 Vector3 lookDirection = (player.position - agent.transform.position);
                 lookDirection.y = 0f; // prevent tilting
+                Quaternion targetRotation = Quaternion.Euler(0, agent.transform.eulerAngles.y + 180f, 0);
                 if (lookDirection != Vector3.zero)
-                    agent.transform.rotation = Quaternion.Slerp(agent.transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 5f);
+                    agent.transform.rotation = Quaternion.Slerp(agent.transform.rotation, targetRotation, Time.deltaTime * 5f);
+                isTouching = true;
             }
         }
     }

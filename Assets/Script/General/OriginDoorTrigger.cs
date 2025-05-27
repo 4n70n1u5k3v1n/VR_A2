@@ -15,10 +15,9 @@ public class OriginDoorTrigger : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        closedPos = door.transform.position;    // set closed position to current position
-
-        openedPos = door.transform.position;    // set opened position based on height variable
-        openedPos.y += openedHeight;
+        closedPos = door.transform.position;
+        openedPos = door.transform.position;
+        openedPos.z += openedHeight; // Use += to move forward, -= to move backward
     }
 
     // Update is called once per frame

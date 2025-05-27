@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203c1a5ea2265354e8d61cd2b5c6db9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 20
+  waitTime: 3
 --- !u!4 &349925447
 Transform:
   m_ObjectHideFlags: 0
