@@ -47,7 +47,7 @@ public class StoryTriggerRoom3 : MonoBehaviour
                 lines = new string[]
                 {
                     "3.Find the Objects",
-                    "4.Follow each light to find the object"
+                    "4.Follow each light"
 
                 };
             }
@@ -56,7 +56,7 @@ public class StoryTriggerRoom3 : MonoBehaviour
                 lines = new string[]
                 {
                     "5.Find the Way out",
-                    "6.The Plate will help you to out"
+                    "6.The Plate will help"
 
                 };
             }
