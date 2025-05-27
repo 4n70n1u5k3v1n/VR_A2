@@ -7,6 +7,7 @@ public class Tile : MonoBehaviour
     public GameObject[] needleParents;
     [SerializeField] private float downDistance = 0.8f;
     [SerializeField] private float moveDuration = 0.1f;
+    [SerializeField] private GameObject trapTrigger;
 
     private List<Transform> needleTransforms = new List<Transform>();
     private List<Vector3> upPositions = new List<Vector3>();
@@ -32,6 +33,14 @@ public class Tile : MonoBehaviour
         else
         {
             Debug.LogWarning("No needle parents found.");
+        }
+    }
+
+    public void DisableTrap()
+    {
+        if (trapTrigger != null)
+        {
+            trapTrigger.SetActive(false);
         }
     }
 
@@ -89,7 +98,7 @@ public class Tile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !gameObject.CompareTag("SafeTile"))
+        if (other.gameObject.CompareTag("Player"))
         {
             RaiseNeedles();
         }

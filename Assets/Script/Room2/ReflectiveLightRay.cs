@@ -60,6 +60,8 @@ public class ReflectiveLightRay : MonoBehaviour
                             {
                                 rend.material = correctTileMaterial;
                             }
+                            Tile tileScript = tile.GetComponent<Tile>();
+                            tileScript.DisableTrap();
                         }
                     }
 

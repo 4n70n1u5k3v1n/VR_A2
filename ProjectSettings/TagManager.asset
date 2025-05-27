@@ -12,7 +12,6 @@ TagManager:
   - Skeleton
   - TriggerObject
   - Needle
-  - SafeTile
   - Tile
   - LightReceiver
   layers:

@@ -7143,6 +7143,7 @@ MonoBehaviour:
   - {fileID: 1961397972604370919}
   downDistance: 0.8
   moveDuration: 0.1
+  trapTrigger: {fileID: 7373842798742025529}
 --- !u!1 &5592036173740456325
 GameObject:
   m_ObjectHideFlags: 0
