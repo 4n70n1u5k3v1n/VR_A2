@@ -13,8 +13,10 @@ public class StatueChecker : MonoBehaviour
     }
 
     public SocketMatch[] socketMatches;       // Assign sockets and statues in Inspector
-    public Room1PortalTrigger portalTrigger;  // Assign your portal trigger script here
     public AudioClip successClip;              // Assign success sound clip here
+
+    [SerializeField] private GameObject teleportTrigger;
+    [SerializeField] private Material activeTeleportMaterial;
 
     private AudioSource audioSource;
     private bool portalActivated = false;
@@ -36,9 +38,10 @@ public class StatueChecker : MonoBehaviour
                 audioSource.PlayOneShot(successClip);
             }
 
-            if (portalTrigger != null)
+            if (teleportTrigger != null && activeTeleportMaterial != null)
             {
-                portalTrigger.ActivatePortal();
+                teleportTrigger.GetComponent<BoxCollider>().isTrigger = true;
+                teleportTrigger.GetComponent<Renderer>().material = activeTeleportMaterial;
             }
 
             portalActivated = true;
