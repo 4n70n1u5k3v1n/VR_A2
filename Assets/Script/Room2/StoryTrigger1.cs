@@ -2,19 +2,21 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
-public class StoryTrigger : MonoBehaviour
+public class StoryTrigger1 : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI storyText;
     [SerializeField] private GameObject[] tileParents;
+    [SerializeField] private AudioSource voiceline1;
+    [SerializeField] private GameObject missionCanvas;
     private bool hasActivated = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (!hasActivated && other.CompareTag("Player"))
         {
-            storyText.text += "\n" + "Mission 2" + "\n" + "Mission 3";
             hasActivated = true;
             StartCoroutine(ActivateTile());
+            StartCoroutine(AddMission());
         }
     }
 
@@ -55,6 +57,22 @@ public class StoryTrigger : MonoBehaviour
                     tileController.LowerNeedles();
                 }
             }
+        }
+    }
+
+    private IEnumerator AddMission()
+    {
+        if (voiceline1 != null)
+        {
+            voiceline1.Play();
+        }
+        storyText.text += "# Disable the Trap";
+
+        yield return new WaitForSeconds(5f);
+
+        if (missionCanvas != null)
+        {
+            missionCanvas.SetActive(true);
         }
     }
 }

@@ -1,20 +1,26 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class PressurePlate: MonoBehaviour
 {
-    public Transform door;
-    public Transform pressurePlate;
-    public ParticleSystem[] sandParticles;
-    public float moveDistance = 6f;
-    public float moveSpeed = 2f;
-    public float platePressDistance = 0.3f;
-    public float plateSpeed = 1f;
+    [SerializeField] private Transform door;
+    [SerializeField] private Transform pressurePlate;
+    [SerializeField] private ParticleSystem[] sandParticles;
+    [SerializeField] private float moveDistance = 6f;
+    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float platePressDistance = 0.3f;
+    [SerializeField] private float plateSpeed = 1f;
+    [SerializeField] private AudioSource doorOpenSFX;
+    [SerializeField] private TextMeshProUGUI storyText;
+    [SerializeField] private AudioSource voiceline2;
+    [SerializeField] private GameObject missionCanvas;
 
     private Vector3 doorOriginalPos;
     private Vector3 doorTargetPos;
     private Vector3 plateOriginalPos;
     private Vector3 platePressedPos;
+    private bool firstTime = true;
 
     void Start()
     {
@@ -33,9 +39,16 @@ public class PressurePlate: MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!firstTime && other.CompareTag("Player"))
         {
             StopAllCoroutines();
+            StartCoroutine(MoveDoor(doorTargetPos));
+            StartCoroutine(MovePlate(platePressedPos));
+        }
+        else if (firstTime && other.CompareTag("Player"))
+        {
+            firstTime = false;
+            StartCoroutine(AddMission());
             StartCoroutine(MoveDoor(doorTargetPos));
             StartCoroutine(MovePlate(platePressedPos));
         }
@@ -53,6 +66,11 @@ public class PressurePlate: MonoBehaviour
 
     private IEnumerator MoveDoor(Vector3 target)
     {
+        if (doorOpenSFX != null)
+        {
+            doorOpenSFX.Play();
+            doorOpenSFX.loop = true;
+        }
         while (Vector3.Distance(door.position, target) > 0.01f)
         {
             door.position = Vector3.MoveTowards(door.position, target, moveSpeed * Time.deltaTime);
@@ -64,6 +82,11 @@ public class PressurePlate: MonoBehaviour
                 }
             }
             yield return null;
+        }
+
+        if (doorOpenSFX != null)
+        {
+            doorOpenSFX.Stop();
         }
 
         if (sandParticles.Length > 0)
@@ -85,5 +108,21 @@ public class PressurePlate: MonoBehaviour
             yield return null;
         }
         pressurePlate.position = target;
+    }
+
+    private IEnumerator AddMission()
+    {
+        if (voiceline2 != null)
+        {
+            voiceline2.Play();
+        }
+        storyText.text += "\n" + "# Find a Heavy Object";
+
+        yield return new WaitForSeconds(7f);
+
+        if (missionCanvas != null)
+        {
+            missionCanvas.SetActive(true);
+        }
     }
 }

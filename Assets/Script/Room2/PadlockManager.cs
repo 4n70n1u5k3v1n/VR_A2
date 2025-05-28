@@ -8,6 +8,7 @@ public class PadlockManager : MonoBehaviour
     [SerializeField] private GameObject teleportTrigger;
     [SerializeField] private Material activeTeleportMaterial;
     [SerializeField] private GameObject padlockCanvas;
+    [SerializeField] private AudioSource unlockSFX;
 
     public void SubmitCode()
     {
@@ -27,6 +28,10 @@ public class PadlockManager : MonoBehaviour
                 if (padlockCanvas != null)
                 {
                     padlockCanvas.SetActive(false);
+                }
+                if (unlockSFX != null)
+                {
+                    unlockSFX.Play();
                 }
             }
         }

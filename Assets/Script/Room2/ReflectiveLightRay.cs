@@ -8,6 +8,8 @@ public class ReflectiveLightRay : MonoBehaviour
     [SerializeField] private string reflectiveTag = "ReflectiveSurface";
     [SerializeField] private string receiverTag = "LightReceiver";
     [SerializeField] private float passThroughOffset = 0.01f;
+    [SerializeField] private AudioSource unlockSFX;
+    [SerializeField] private GameObject padlock;
 
     [Header("Highlighting")]
     [SerializeField] private Material correctTileMaterial;
@@ -15,6 +17,7 @@ public class ReflectiveLightRay : MonoBehaviour
     [SerializeField] private Material lightReceiverMaterial;
     [SerializeField] private GameObject lightReceiver;
 
+    private bool lightReceived = false;
     void Update()
     {
         DrawLightRay(transform.position, transform.forward, maxReflections);
@@ -45,8 +48,13 @@ public class ReflectiveLightRay : MonoBehaviour
                     currentDir = Vector3.Reflect(currentDir, hit.normal);
                     reflectionsRemaining--;
                 }
-                else if (hit.collider.CompareTag(receiverTag))
+                else if (hit.collider.CompareTag(receiverTag) && !lightReceived)
                 {
+                    lightReceived = true;
+                    if (unlockSFX != null)
+                    {
+                        unlockSFX.Play();
+                    }
                     Renderer receiverRenderer = hit.collider.GetComponent<Renderer>();
                     if (receiverRenderer != null && correctTileMaterial != null)
                         receiverRenderer.material = correctTileMaterial;
@@ -69,6 +77,11 @@ public class ReflectiveLightRay : MonoBehaviour
                     if (renderer != null)
                     {
                         renderer.material = lightReceiverMaterial;
+                    }
+
+                    if (padlock != null)
+                    {
+                        padlock.SetActive(true);
                     }
 
                     break;
