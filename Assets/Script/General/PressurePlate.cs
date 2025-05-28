@@ -39,13 +39,13 @@ public class PressurePlate: MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!firstTime && other.CompareTag("Player"))
+        if (!firstTime && (other.CompareTag("Player") || other.gameObject.name.Equals("Mirror")))
         {
             StopAllCoroutines();
             StartCoroutine(MoveDoor(doorTargetPos));
             StartCoroutine(MovePlate(platePressedPos));
         }
-        else if (firstTime && other.CompareTag("Player"))
+        else if (firstTime && (other.CompareTag("Player") || other.gameObject.name.Equals("Mirror")))
         {
             firstTime = false;
             StartCoroutine(AddMission());
