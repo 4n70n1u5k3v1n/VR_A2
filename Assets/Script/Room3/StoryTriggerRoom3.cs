@@ -4,14 +4,14 @@ using TMPro;
 
 public class StoryTriggerRoom3 : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI storyText; // Reference to the UI text element
-    [SerializeField] private AudioClip triggerSound; // Sound to play when the trigger is activated
-    private AudioSource audioSource; // AudioSource component to play the sound
-    private bool hasTriggered = false; // Flag to track if the trigger has been activated
+    [SerializeField] private TextMeshProUGUI storyText; 
+    [SerializeField] private AudioClip triggerSound;
+    [SerializeField] private GameObject objectiveCanvas;
+    private AudioSource audioSource; 
+    private bool hasTriggered = false; 
 
     private void Start()
     {
-        // Get or add an AudioSource component to this GameObject
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -21,7 +21,7 @@ public class StoryTriggerRoom3 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !hasTriggered) // Check if the collider is the player and the trigger hasn't been activated
+        if (other.CompareTag("Player") && !hasTriggered) 
         {
             string[] lines;
 
@@ -75,6 +75,10 @@ public class StoryTriggerRoom3 : MonoBehaviour
             if (triggerSound != null)
             {
                 audioSource.PlayOneShot(triggerSound);
+            }
+            if (objectiveCanvas != null)
+            {
+                objectiveCanvas.SetActive(true);
             }
 
             hasTriggered = true; // Mark the trigger as activated
