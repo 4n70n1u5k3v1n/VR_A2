@@ -20,6 +20,7 @@ public class DoorTrigger3 : MonoBehaviour
 
         // Don't play automatically on awake
         audioSource.playOnAwake = false;
+
     }
 
     public void OpenDoor()

@@ -2,6 +2,8 @@
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class StatueChecker : MonoBehaviour
 {
@@ -13,18 +15,30 @@ public class StatueChecker : MonoBehaviour
     }
 
     public SocketMatch[] socketMatches;       // Assign sockets and statues in Inspector
-    public AudioClip successClip;              // Assign success sound clip here
 
+    [Header("Audio Settings")]
+    public AudioClip successClip;             // First sound (e.g. click, lock) — loops
+    public AudioClip additionalClip;          // Second sound (e.g. chime) — plays once
+
+    [Header("Portal Settings")]
     [SerializeField] private GameObject teleportTrigger;
     [SerializeField] private Material activeTeleportMaterial;
 
-    private AudioSource audioSource;
+    private AudioSource loopSource;       // Plays successClip on loop
+    private AudioSource extraAudioSource; // Plays additionalClip once
     private bool portalActivated = false;
 
     void Start()
     {
-        // Add AudioSource component for playing success sound
-        audioSource = gameObject.AddComponent<AudioSource>();
+        loopSource = gameObject.AddComponent<AudioSource>();
+        loopSource.loop = true;
+        loopSource.spatialBlend = 1.0f;
+
+        extraAudioSource = gameObject.AddComponent<AudioSource>();
+        extraAudioSource.spatialBlend = 1.0f;
+
+        // Optional: Stop audio when scene changes
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     void Update()
@@ -33,10 +47,7 @@ public class StatueChecker : MonoBehaviour
         {
             Debug.Log("All statues correctly placed! Activating portal...");
 
-            if (successClip != null)
-            {
-                audioSource.PlayOneShot(successClip);
-            }
+            StartCoroutine(PlaySuccessSequence());
 
             if (teleportTrigger != null && activeTeleportMaterial != null)
             {
@@ -48,11 +59,24 @@ public class StatueChecker : MonoBehaviour
         }
     }
 
+    private IEnumerator PlaySuccessSequence()
+    {
+        if (successClip != null)
+        {
+            loopSource.clip = successClip;
+            loopSource.Play();
+        }
+
+        yield return new WaitForSeconds(0.2f); // Optional tiny delay
+
+        if (additionalClip != null)
+            extraAudioSource.PlayOneShot(additionalClip);
+    }
+
     bool AllStatuesCorrectlyPlaced()
     {
         foreach (SocketMatch match in socketMatches)
         {
-            // Get the XRSocketInteractor component on the socket transform
             XRSocketInteractor interactor = match.socket.GetComponent<XRSocketInteractor>();
 
             if (interactor == null)
@@ -61,30 +85,32 @@ public class StatueChecker : MonoBehaviour
                 return false;
             }
 
-            // Check if socket has a selected object
             if (!interactor.hasSelection)
             {
                 Debug.Log("Socket has no selected object: " + match.socket.name);
                 return false;
             }
 
-            // Get the selected interactable and cast it to XRBaseInteractable
             IXRSelectInteractable selectedInteractable = interactor.GetOldestInteractableSelected();
             XRBaseInteractable selected = selectedInteractable as XRBaseInteractable;
 
-            if (selected == null)
-            {
-                Debug.LogWarning("Selected interactable is not an XRBaseInteractable on socket: " + match.socket.name);
-                return false;
-            }
-
-            // Check if the selected GameObject matches the correct statue
-            if (selected.gameObject != match.correctStatue)
+            if (selected == null || selected.gameObject != match.correctStatue)
             {
                 Debug.Log("Wrong statue in socket: " + match.socket.name);
                 return false;
             }
         }
         return true;
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        if (loopSource != null && loopSource.isPlaying)
+            loopSource.Stop();
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
     }
 }

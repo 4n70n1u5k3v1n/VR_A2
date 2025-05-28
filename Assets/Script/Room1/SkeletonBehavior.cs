@@ -18,6 +18,7 @@ public class SkeletonBehavior : MonoBehaviour
         boneAudio = gameObject.AddComponent<AudioSource>();
         boneAudio.clip = boneClip;
         boneAudio.playOnAwake = false;
+        boneAudio.spatialBlend = 1.0f; // Makes the sound fully 3D
     }
 
     void Update()
