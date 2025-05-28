@@ -4117,6 +4117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyText: {fileID: 974047618}
   triggerSound: {fileID: 8300000, guid: e631bd9bb87e2e940a896ecb069c45d4, type: 3}
+  objectiveCanvas: {fileID: 800534099}
 --- !u!65 &118970701
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4210,6 +4211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyText: {fileID: 974047618}
   triggerSound: {fileID: 8300000, guid: e35c7775e76480447aab6bb26dd47f1e, type: 3}
+  objectiveCanvas: {fileID: 800534099}
 --- !u!65 &121928116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8989,6 +8991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyText: {fileID: 974047618}
   triggerSound: {fileID: 8300000, guid: 0a4015ecf9032a74682633cb0030e9f2, type: 3}
+  objectiveCanvas: {fileID: 800534099}
 --- !u!65 &289614184
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10621,6 +10624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyText: {fileID: 974047618}
   triggerSound: {fileID: 8300000, guid: 76ee1978d2d55ba47acd5d551db93a56, type: 3}
+  objectiveCanvas: {fileID: 800534099}
 --- !u!65 &365603276
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31573,6 +31577,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ad256a550671114189af7b0555ef422, type: 3}
+--- !u!1 &800534099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 923150424225799879, guid: 67b0dd72bfe644846a72fa6b6d04dd31, type: 3}
+  m_PrefabInstance: {fileID: 1381196075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &802406613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38369,6 +38378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyText: {fileID: 974047618}
   triggerSound: {fileID: 8300000, guid: c42d70e79c248af41b141f4911bda946, type: 3}
+  objectiveCanvas: {fileID: 800534099}
 --- !u!65 &891077023
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40810,6 +40820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyText: {fileID: 974047618}
   triggerSound: {fileID: 8300000, guid: b6c6ed748f07de84fbd40b15184fb716, type: 3}
+  objectiveCanvas: {fileID: 800534099}
 --- !u!65 &964437703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40841,7 +40852,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.2, y: 0, z: 2.09}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_LocalScale: {x: 4, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 426173903}
@@ -42005,6 +42016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyText: {fileID: 974047618}
   triggerSound: {fileID: 8300000, guid: 9408b376846c8ed47887ab9f61c2bc2d, type: 3}
+  objectiveCanvas: {fileID: 800534099}
 --- !u!65 &1018886544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48725,7 +48737,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.2, y: 0, z: -2.12}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_LocalScale: {x: 4, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 426173903}
@@ -48744,6 +48756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyText: {fileID: 974047618}
   triggerSound: {fileID: 8300000, guid: b6c6ed748f07de84fbd40b15184fb716, type: 3}
+  objectiveCanvas: {fileID: 800534099}
 --- !u!65 &1275778872
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50657,7 +50670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932363549436368965, guid: 67b0dd72bfe644846a72fa6b6d04dd31, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 9193935668969211257, guid: 67b0dd72bfe644846a72fa6b6d04dd31, type: 3}
       propertyPath: m_text
