@@ -8,6 +8,7 @@ public class FinalDoorTrigger : MonoBehaviour
 
     public GameObject mummy = null;        // Reference to the mummy GameObject
     private AudioSource groanAudio = null; // Mummy groan sound
+    public AudioSource triggerSound;        // door opening sound
 
     Vector3 openedPos = Vector3.zero;   // position of the opened door
     Vector3 closedPos = Vector3.zero;   // position of the closed door
@@ -61,6 +62,11 @@ public class FinalDoorTrigger : MonoBehaviour
         // activate the door and set direction to open
         isActivated = true;
         direction = 1;
+
+        if (triggerSound != null && !triggerSound.isPlaying)
+        {
+            triggerSound.Play();
+        }
     }
 
     // called when a GameObject exits the collider

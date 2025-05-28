@@ -24,6 +24,7 @@ public class WallTrigger : MonoBehaviour
     private NavMeshAgent agent;
 
     private AudioSource mummyGroan;
+    public AudioSource triggerSound;        // door opening sound
     void Start()
     {
         // Door position setup
@@ -99,6 +100,11 @@ public class WallTrigger : MonoBehaviour
             if (mummyGroan != null && !mummyGroan.isPlaying)
             {
                 mummyGroan.Play();
+            }
+
+            if (triggerSound != null && !triggerSound.isPlaying)
+            {
+                triggerSound.Play();
             }
         }
     }
