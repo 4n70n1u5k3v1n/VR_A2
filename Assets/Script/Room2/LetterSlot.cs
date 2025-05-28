@@ -5,6 +5,7 @@ using System.Collections;
 public class LetterSlot : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI letterText;
+    [SerializeField] private AudioSource buttonSFX;
     private char currentChar = 'A';
 
     public void Start()
@@ -34,6 +35,11 @@ public class LetterSlot : MonoBehaviour
         if (letterText != null)
         {
             letterText.text = currentChar.ToString();
+        }
+
+        if (buttonSFX != null)
+        {
+            buttonSFX.Play();
         }
     }
 
