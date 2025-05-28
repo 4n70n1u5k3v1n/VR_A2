@@ -41,13 +41,14 @@ public class SpiderSpawner : MonoBehaviour
         if (spiderSound != null)
         {
             AudioSource audio = spider.AddComponent<AudioSource>();
+            audio.spatialBlend = 1.0f;
             audio.clip = spiderSound;
             audio.playOnAwake = false;
             audio.loop = false;
             audio.Play();
         }
 
-        // Auto destroy spider after 6 seconds
+        // Auto destroy spider after 4 seconds
         Destroy(spider, 4f);
     }
 }
