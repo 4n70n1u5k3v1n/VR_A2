@@ -8360,6 +8360,7 @@ MonoBehaviour:
   - socket: {fileID: 236139115}
     correctStatue: {fileID: 958424718}
   portalTrigger: {fileID: 1887192770}
+  successClip: {fileID: 8300000, guid: 94f18525cf6d79840bc1efec41c7539f, type: 3}
 --- !u!1 &629638174 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 118458008299423567, guid: 1211a8a70ccbf8941b4f049e54df814a, type: 3}
@@ -11925,15 +11926,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4c15e7a2648b4d44871ebd9ff089469, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.945
+      value: 13.99
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4c15e7a2648b4d44871ebd9ff089469, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.952
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4c15e7a2648b4d44871ebd9ff089469, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.68
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4c15e7a2648b4d44871ebd9ff089469, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27156,8 +27157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 420823650}
   detectionRange: 100
-  statuePrefab: {fileID: 958424718}
-  statueSpawnPoint: {fileID: 482007414}
+  realStatue: {fileID: 958424718}
 --- !u!1 &2069480193 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100212, guid: 0be9ffbf4645299489bd04231131b078, type: 3}

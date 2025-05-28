@@ -6,8 +6,7 @@ public class SkeletonGameManager : MonoBehaviour
     public float detectionRange = 100f;
     private SkeletonBehavior[] skeletons;
 
-    public GameObject statuePrefab;      // Assign your statue prefab in the Inspector
-    public Transform statueSpawnPoint;   // Assign the altar or spawn point in the Inspector
+    public GameObject realStatue;        // Drag the real (disabled) statue GameObject from the scene here
 
     private bool skeletonsActivated = false;
     private bool winTriggered = false;
@@ -15,6 +14,12 @@ public class SkeletonGameManager : MonoBehaviour
     void Start()
     {
         skeletons = FindObjectsOfType<SkeletonBehavior>();
+
+        // Just to be safe, ensure the statue is hidden at the start
+        if (realStatue != null)
+        {
+            realStatue.SetActive(false);
+        }
     }
 
     void Update()
@@ -55,7 +60,7 @@ public class SkeletonGameManager : MonoBehaviour
 
         if (allReached)
         {
-            winTriggered = true; // Ensure this runs once
+            winTriggered = true;
             Debug.Log("All skeletons reached the center! You win!");
             StartCoroutine(HandleWinSequence());
         }
@@ -72,7 +77,7 @@ public class SkeletonGameManager : MonoBehaviour
 
     private System.Collections.IEnumerator HandleWinSequence()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
 
         // Destroy skeletons
         foreach (SkeletonBehavior skel in skeletons)
@@ -80,10 +85,10 @@ public class SkeletonGameManager : MonoBehaviour
             Destroy(skel.gameObject);
         }
 
-        // Spawn the real statue
-        if (statuePrefab != null && statueSpawnPoint != null)
+        // Activate the hidden statue
+        if (realStatue != null)
         {
-            Instantiate(statuePrefab, statueSpawnPoint.position, statueSpawnPoint.rotation);
+            realStatue.SetActive(true);
         }
 
         Debug.Log("Real statue has appeared!");
