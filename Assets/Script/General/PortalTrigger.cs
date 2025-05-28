@@ -3,22 +3,35 @@ using UnityEngine.SceneManagement;
 
 public class PortalTrigger : MonoBehaviour
 {
-    // called when a GameObject collides with the collider
+    private string currentScene;
+
+    void Start()
+    {
+        currentScene = SceneManager.GetActiveScene().name;
+
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        // check whether the player collided with the trigger
         if(other.tag == "Player")
         {
-            // move to the next scene
-            SharedResources.sceneCount++;
-
-            // determine the scene name
-            string nextScene = SharedResources.sceneName;
-
-            nextScene = SharedResources.sceneName + SharedResources.sceneCount;
-
-            // load the next scene
-            SceneManager.LoadScene(nextScene);
+            if (currentScene == "OriginScene")
+            {
+                SharedResources.sceneName = "Room1";
+            }
+            else if (currentScene == "Room1")
+            {
+                SharedResources.sceneName = "Room2";
+            }
+            else if (currentScene == "Room2")
+            {
+                SharedResources.sceneName = "Room3";
+            }
+            else if (currentScene == "Room3")
+            {
+                SharedResources.sceneName = "FinalScene";
+            }
+            SceneManager.LoadScene("LoadingScene");
         }
     }
 }

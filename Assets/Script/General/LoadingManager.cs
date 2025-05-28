@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadingManager : MonoBehaviour
 {
-    public float waitTime = 3f;
+    [SerializeField] private float waitTime = 3f;
 
     void Start()
     {
@@ -13,8 +13,6 @@ public class LoadingManager : MonoBehaviour
     System.Collections.IEnumerator LoadAfterDelay()
     {
         yield return new WaitForSeconds(waitTime);
-
-        // Load the dynamic next room (e.g., Room2, Room3)
         SceneManager.LoadScene(SharedResources.sceneName);
     }
 }

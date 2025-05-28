@@ -5939,7 +5939,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6209167704233865800, guid: e8677bde30e06f341b0e897430988f1c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1452635490}
+      addedObject: {fileID: 1452635493}
   m_SourcePrefab: {fileID: 100100000, guid: e8677bde30e06f341b0e897430988f1c, type: 3}
 --- !u!4 &456048958 stripped
 Transform:
@@ -8359,8 +8359,9 @@ MonoBehaviour:
     correctStatue: {fileID: 1200365541}
   - socket: {fileID: 236139115}
     correctStatue: {fileID: 958424718}
-  portalTrigger: {fileID: 1887192770}
   successClip: {fileID: 8300000, guid: 94f18525cf6d79840bc1efec41c7539f, type: 3}
+  teleportTrigger: {fileID: 1887192764}
+  activeTeleportMaterial: {fileID: 2100000, guid: 85399569ec288d74f87178588fab3d82, type: 2}
 --- !u!1 &629638174 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 118458008299423567, guid: 1211a8a70ccbf8941b4f049e54df814a, type: 3}
@@ -19797,8 +19798,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6209167704233865800, guid: e8677bde30e06f341b0e897430988f1c, type: 3}
   m_PrefabInstance: {fileID: 456048957}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1452635490
-BoxCollider:
+--- !u!64 &1452635493
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -19815,9 +19816,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.5, y: 3.4649093, z: 0.5}
-  m_Center: {x: 0, y: 1.7324547, z: 0.0000012889504}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6450097684484097987, guid: 21ff30ad50ed2d74e8874afc2551998b, type: 3}
 --- !u!1 &1464305458
 GameObject:
   m_ObjectHideFlags: 0
@@ -24901,6 +24903,7 @@ GameObject:
   - component: {fileID: 1887192768}
   - component: {fileID: 1887192767}
   - component: {fileID: 1887192770}
+  - component: {fileID: 1887192771}
   m_Layer: 0
   m_Name: PortalDoor
   m_TagString: Untagged
@@ -24967,7 +24970,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -382652638819485698, guid: f396e3429a4864fc2ad497cb3ce5fe2c, type: 3}
+  - {fileID: 2100000, guid: 383f55e81232bfa42966e2923c9df9ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25004,9 +25007,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887192764}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da6180293cf6a4c4b9f549652f016261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1887192771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887192764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e475dc83120b34cb96504bda8f3b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1891564633
