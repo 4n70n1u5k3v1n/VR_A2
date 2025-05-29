@@ -24,13 +24,15 @@ public class StoryTrigger4 : MonoBehaviour
         {
             voiceline4.Play();
         }
-        storyText.text += "\n" + "# Grab the Mirrors and Plates";
+        
 
         yield return new WaitForSeconds(5f);
-
+        
+        storyText.text += "\n" + "# Grab the Mirrors and Plates";
+        
         if (missionCanvas != null)
         {
-            missionCanvas.SetActive(true);
+            missionCanvas.GetComponent<InputHandler>().ForceOpenMissionSheet();
         }
     }
 }

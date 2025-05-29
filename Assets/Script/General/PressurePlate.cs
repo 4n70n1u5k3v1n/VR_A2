@@ -123,13 +123,15 @@ public class PressurePlate: MonoBehaviour
         {
             voiceline2.Play();
         }
-        storyText.text += "\n" + "# Find a Heavy Object";
+        
 
         yield return new WaitForSeconds(7f);
 
+        storyText.text += "\n" + "# Find a Heavy Object";
+        
         if (missionCanvas != null)
         {
-            missionCanvas.SetActive(true);
+            missionCanvas.GetComponent<InputHandler>().ForceOpenMissionSheet();
         }
     }
 }

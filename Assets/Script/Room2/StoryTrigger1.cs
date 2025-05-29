@@ -66,13 +66,13 @@ public class StoryTrigger1 : MonoBehaviour
         {
             voiceline1.Play();
         }
-        storyText.text += "# Disable the Trap";
 
         yield return new WaitForSeconds(5f);
 
+        storyText.text += "# Disable the Trap";
         if (missionCanvas != null)
         {
-            missionCanvas.SetActive(true);
+            missionCanvas.GetComponent<InputHandler>().ForceOpenMissionSheet();
         }
     }
 }
