@@ -35,6 +35,12 @@ public class InputHandler : MonoBehaviour
         missionSheet.SetActive(missionSheetActive);
     }
 
+    public void ForceOpenMissionSheet()
+    {
+        missionSheetActive = true;
+        missionSheet.SetActive(missionSheetActive);
+    }
+
     public void ForceCloseMissionSheet()
     {
         missionSheetActive = false;

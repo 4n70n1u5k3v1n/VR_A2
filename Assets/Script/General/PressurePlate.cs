@@ -21,6 +21,7 @@ public class PressurePlate: MonoBehaviour
     private Vector3 plateOriginalPos;
     private Vector3 platePressedPos;
     private bool firstTime = true;
+    private int objectNumber = 0;
 
     void Start()
     {
@@ -41,12 +42,14 @@ public class PressurePlate: MonoBehaviour
     {
         if (!firstTime && (other.CompareTag("Player") || other.gameObject.name.Equals("Mirror")))
         {
+            objectNumber++;
             StopAllCoroutines();
             StartCoroutine(MoveDoor(doorTargetPos));
             StartCoroutine(MovePlate(platePressedPos));
         }
         else if (firstTime && (other.CompareTag("Player") || other.gameObject.name.Equals("Mirror")))
         {
+            objectNumber++;
             firstTime = false;
             StartCoroutine(AddMission());
             StartCoroutine(MoveDoor(doorTargetPos));
@@ -56,11 +59,15 @@ public class PressurePlate: MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.gameObject.name.Equals("Mirror"))
         {
-            StopAllCoroutines();
-            StartCoroutine(MoveDoor(doorOriginalPos));
-            StartCoroutine(MovePlate(plateOriginalPos));
+            objectNumber--;
+            if (objectNumber <= 0)
+            {
+                StopAllCoroutines();
+                StartCoroutine(MoveDoor(doorOriginalPos));
+                StartCoroutine(MovePlate(plateOriginalPos));
+            }
         }
     }
 
@@ -116,13 +123,15 @@ public class PressurePlate: MonoBehaviour
         {
             voiceline2.Play();
         }
-        storyText.text += "\n" + "# Find a Heavy Object";
+        
 
         yield return new WaitForSeconds(7f);
 
+        storyText.text += "\n" + "# Find a Heavy Object";
+        
         if (missionCanvas != null)
         {
-            missionCanvas.SetActive(true);
+            missionCanvas.GetComponent<InputHandler>().ForceOpenMissionSheet();
         }
     }
 }

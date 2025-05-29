@@ -24,13 +24,15 @@ public class StoryTrigger5 : MonoBehaviour
         {
             voiceline5.Play();
         }
-        storyText.text += "\n" + "# Solve the Padlock";
+        
 
         yield return new WaitForSeconds(6f);
-
+        
+        storyText.text += "\n" + "# Solve the Padlock";
+        
         if (missionCanvas != null)
         {
-            missionCanvas.SetActive(true);
+            missionCanvas.GetComponent<InputHandler>().ForceOpenMissionSheet();
         }
     }
 }
