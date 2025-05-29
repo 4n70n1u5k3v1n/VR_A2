@@ -55,8 +55,35 @@ public class StoryTriggerRoom3 : MonoBehaviour
             {
                 lines = new string[]
                 {
-                    "5.Find the Way out",
-                    "6.The Plate will help"
+                    "5.Find the Way out"
+                    
+
+                };
+            }
+            else if (gameObject.name == "Trigger5")
+            {
+                lines = new string[]
+                {
+                    
+                    "6.Follow the light"
+
+                };
+            }
+            else if (gameObject.name == "Trigger6")
+            {
+                lines = new string[]
+                {
+                    "7.The Plate will help",
+                    "9. Only 1 plate is the key"
+
+                };
+            }
+            else if (gameObject.name == "Trigger7")
+            {
+                lines = new string[]
+                {
+                 
+                    "10. Go into the Portal"
 
                 };
             }

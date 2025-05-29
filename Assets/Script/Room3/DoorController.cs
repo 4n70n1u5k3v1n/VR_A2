@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class DoorController : MonoBehaviour
 {
-    public XRSocketInteractor socket1;
-    public XRSocketInteractor socket2;
-    public XRSocketInteractor socket3;
-    public XRSocketInteractor socket4;
-    public XRSocketInteractor socket5;
+    public UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor socket1;
+    public UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor socket2;
+    public UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor socket3;
+    public UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor socket4;
+    public UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor socket5;
 
     public GameObject door;
     public float doorSpeed = 2f;
@@ -75,7 +74,8 @@ public class DoorController : MonoBehaviour
     private void OnItemAttached(SelectEnterEventArgs arg)
     {
         // Check if all sockets have items attached
-        if (socket1.hasSelection && socket2.hasSelection && socket3.hasSelection)
+        if (socket1.hasSelection && socket2.hasSelection && socket3.hasSelection && socket4.hasSelection && socket5.hasSelection)
+
         {
             // Start opening the door
             isDoorOpening = true;

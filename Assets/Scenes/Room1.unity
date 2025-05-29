@@ -3584,6 +3584,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 7.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9162929216978311408, guid: 67b0dd72bfe644846a72fa6b6d04dd31, type: 3}
+      propertyPath: m_SmoothTurnEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162929216978311408, guid: 67b0dd72bfe644846a72fa6b6d04dd31, type: 3}
+      propertyPath: m_SmoothMotionEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9193935668969211257, guid: 67b0dd72bfe644846a72fa6b6d04dd31, type: 3}
       propertyPath: m_text
       value: "1. Find the statues in all rooms.\n  a. Find the correct statue.\n 
@@ -5011,7 +5019,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2287353120183323330, guid: f866648d31fd9494093daef232970acf, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1761990651}
+      addedObject: {fileID: 1761990649}
   m_SourcePrefab: {fileID: 100100000, guid: f866648d31fd9494093daef232970acf, type: 3}
 --- !u!4 &388253802 stripped
 Transform:
@@ -23257,8 +23265,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2287353120183323330, guid: f866648d31fd9494093daef232970acf, type: 3}
   m_PrefabInstance: {fileID: 388253801}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1761990651
-BoxCollider:
+--- !u!64 &1761990649
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -23275,9 +23283,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4, y: 4, z: 0.19999999}
-  m_Center: {x: 2, y: 2, z: 0}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5505000599535378963, guid: dc4f94dd759a9b141a7411b1144b2de2, type: 3}
 --- !u!1001 &1767041108
 PrefabInstance:
   m_ObjectHideFlags: 0
