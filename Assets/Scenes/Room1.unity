@@ -3188,7 +3188,7 @@ PrefabInstance:
     - target: {fileID: 8429981633443581383, guid: 6c8af5c8012f01440af6cb2bc3eb987c, type: 3}
       propertyPath: m_LocomotionVignetteProviders.Array.data[0].m_LocomotionProvider
       value: 
-      objectReference: {fileID: 837156896}
+      objectReference: {fileID: 2064001577}
     - target: {fileID: 8429981633443581383, guid: 6c8af5c8012f01440af6cb2bc3eb987c, type: 3}
       propertyPath: m_LocomotionVignetteProviders.Array.data[0].m_OverrideParameters.m_EaseInTime
       value: 0.3
@@ -10448,17 +10448,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 584756636}
   m_SourcePrefab: {fileID: 100100000, guid: d2670d0ea7d6e7f4cb7e6be1a5541d46, type: 3}
---- !u!114 &837156896 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 927748443823956248, guid: df9e0ae5cc60014438b6b9f15897be26, type: 3}
-  m_PrefabInstance: {fileID: 715606405}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b1e8c997df241c1a67045eeac79b41b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &840151441
 GameObject:
   m_ObjectHideFlags: 0
@@ -27314,6 +27303,17 @@ MonoBehaviour:
   playerCamera: {fileID: 420823650}
   detectionRange: 100
   realStatue: {fileID: 958424718}
+--- !u!114 &2064001577 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3296045337797649334, guid: 67b0dd72bfe644846a72fa6b6d04dd31, type: 3}
+  m_PrefabInstance: {fileID: 241778178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1e8c997df241c1a67045eeac79b41b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2069480193 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100212, guid: 0be9ffbf4645299489bd04231131b078, type: 3}
